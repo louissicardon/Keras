@@ -11,7 +11,7 @@ import os
 
 batch_size = 64
 num_classes = 10
-epochs = 10
+epochs = 200
 data_augmentation = True
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
@@ -82,7 +82,7 @@ batch_size = 64
 #opt_rms = keras.optimizers.rmsprop(lr=0.001,decay=1e-6)
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.fit_generator(datagen.flow(x_train, y_train, batch_size=batch_size),\
-                    steps_per_epoch=x_train.shape[0] // batch_size,epochs=125,\
+                    steps_per_epoch=x_train.shape[0] // batch_size,epochs=epochs,\
                     verbose=1,validation_data=(x_test,y_test),callbacks=[LearningRateScheduler(lr_schedule)])
 
 #save to disk
